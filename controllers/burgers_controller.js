@@ -16,6 +16,12 @@ router.get('/', function (req, res) {
     });
 });
 
+router.get('/api/burger', function (req, res) {
+    burger.selectAll(function (data) {
+        res.json(data);
+    });
+})
+
 // // Create a New Burger
 // router.post('/burger/create', function (req, res) {
 //     burger.insertOne(req.body.burger_name, function () {
