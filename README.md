@@ -4,6 +4,6 @@ I'm a big fan of Bob's Burgers and I have no rights to anything FOX owns, I'm on
 
 # How The App Should Work
 
-Burger Madness! is a restaurant app that lets users input the names of burgers they'd like to eat or select already awesome creations. Whenever a user submits a burger's name, your app will display the burger on the left side of the page -- waiting to be picked up and devoured. When the user clicks the pickup button, the burger will move to the right side of the page. The app will store every burger in a database shown in the menu.
+Burger Madness! is a restaurant app that lets users input the names of burgers they'd like to eat or select already awesome creations. Whenever a user submits a burger's name, your app will display the burger on the left side of the page -- waiting to be picked up and devoured. When the user clicks the pickup button, the burger will move to the right side of the page. The app will store every burger in a database shown in the menu. This app is mobile responsive and was designed for both desktop and mobile throughout the project.
 
 ![alt text](https://github.com/SuzanneRashka/burger/blob/master/assets/images/burgers.png)
