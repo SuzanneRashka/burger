@@ -1,40 +1,87 @@
-<div>
+{{!-- --}}
+<!-- Directions and Bobs logo -->
+<div class="row">
+    <div class="col-md-6">
+        <img src="images/window.png" alt="order window" class="window">
+        <div class="window-text">
+            <p>Choose a Burger from the list to place your order. Don't see a burger you like?
+                Enter a
+                burger you would
+                like to the list using the submit form
+                below.</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <img src="https://assets.foxdcg.com/dpp-uploaded/images/bobs-burgers/logo-pho1.png" class="bobs-logo" alt="bobs">
 
-    <!-- Burgers Available -->
+    </div>
+</div>
+<!-- End -->
 
-    <div>
+<!-- Menu -->
+<div class="chalkboard chalk">
+    <center>
         <h3>Burger Menu</h3>
-        <div id="burgersAvailable">
-
+        <div>
             {{#each burgers}}
             <form action="api/burger/{{id}}" method="POST">
                 <div>
-                    <li>{{id}} {{burger_name}}</li>
-                    <span>
-                        <button type="submit">Order</button>
+                    <li>{{id}} {{burger_name}}<span class="">
+                            <button type="submit" class="menu-button">Order</button>
+                        </span></li>
+                </div>
+            </form>
+            {{/each}}
+        </div>
+    </center>
+</div>
+<!-- End -->
+
+<!-- Input New Burgers Form -->
+<div class="row">
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <form action="api/burger" method="POST">
+            <div class="form-group">
+                <h4><label for="new_burger">Request a new burger!</label></h4>
+                <input class="form-control" type="text" columns="6" rows="2" value="" name="burger_name" />
+            </div>
+
+            <!-- Submit Button -->
+
+        </form>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12 burger-maker">
+        <button type="submit" class="btn btn-danger">Make my Burger!</button>
+    </div>
+</div>
+<!-- End -->
+
+<!-- Left side (Burgers Available) -->
+<div class="row">
+    <div class="col-md-6 ready">
+        <h3>Burgers Ready</h3>
+        <div>
+            <!-- Dynamically Add User Burgers Here -->
+            {{#each burgers}}
+            {{#unless devoured}}
+            <form action="api/burger/{{id}}" method="POST">
+                <div class="input-group">
+                    <li class="form-control">{{id}}. {{burger_name}}</li>
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="submit">Pick Up</button>
                     </span>
                 </div>
             </form>
-
+            {{/unless}}
             {{/each}}
-
         </div>
     </div>
 
-    {{!-- Order a burger --}}
-    <div>
-        <form class="create-form">
-            <p for="burger">Burger Name:</p>
-            <div><input type="text" id="burger" name="name"></div>
-            <button type="submit">Submit Order</button>
-        </form>
-    </div>
-
-    <!-- Burgers Eaten -->
-    <div class="col-md-4">
-        <h3>Burgers Devoured</h3>
-        <div id="burgersEaten">
-
+    <!-- Right side (Burgers Complete) -->
+    <div class="col-md-6 completed">
+        <h3>Burgers Completed</h3>
+        <div>
+            <!-- Dynamically Insert Devoured Burgers Here -->
             {{#each burgers}}
             {{#if this.devoured}}
             <div class="input-group">
@@ -42,9 +89,6 @@
             </div>
             {{/if}}
             {{/each}}
-
         </div>
     </div>
-
-
 </div>

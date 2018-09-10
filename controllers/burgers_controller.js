@@ -1,50 +1,46 @@
-var express = require("express");
-
+var express = require('express');
 var router = express.Router();
+var burger = require('../models/burger.js');
 
-var burger = require("../models/burger");
 
-//Routes
+//Setup Routes
 
-// select all burgers
+// Home
 router.get('/', function (req, res) {
-    burger.all(function (data) {
-        var hbsObj = {
+    burger.selectAll(function (data) {
+        var hbsObject = {
             burgers: data
         };
-        console.log(hbsObj);
-        res.render("index", hbsObj);
+        //console.log(hbsObject);
+        res.render('index', hbsObject);
     });
 });
 
-// create a new burger
-router.post('/api/burgers', function (req, res) {
-    burger.create(req.body.burger_name, function (result) {
-        res.json({
-            id: result.insertId
-        });
-        console.log(result);
+// // Create a New Burger
+// router.post('/burger/create', function (req, res) {
+//     burger.insertOne(req.body.burger_name, function () {
+//         res.redirect('/');
+//     });
+// });
+// Create a New Burger
+router.post('/api/burger', function (req, res) {
+    burger.insertOne(req.body.burger_name, function () {
+        res.redirect('/');
     });
 });
 
-// delete a burger
-router.put('api/burgers/:id', function (req, res) {
-    var condition = "id = " + req.params.id;
-    //call burger.js in models to access update to trigger updateOne in orm.js
-    console.log("condition in controller = " + condition);
-    burger.update({
-        devoured: true
-    }, condition, function (result) {
-        if (result.changedRows === 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
-});
-
-// router.get('/', function (req, res) {
-//     res.redirect('/index');
+// // Devour a Burger
+// router.post('/burger/eat/:id', function (req, res) {
+//     burger.updateOne(req.params.id, function () {
+//         res.redirect('/');
+//     });
 // });
 
+router.post('/api/burger/:id', function (req, res) {
+    burger.updateOne(req.params.id, function () {
+        res.redirect('/');
+    });
+});
+
+// Export routes
 module.exports = router;
