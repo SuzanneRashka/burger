@@ -1,5 +1,4 @@
 var mysql = require("mysql");
-
 var connection;
 
 if (process.env.JAWSDB_URL) {
@@ -11,8 +10,7 @@ if (process.env.JAWSDB_URL) {
         password: "root",
         database: "burgers_db"
     });
-}
+};
+
 connection.connection();
-
-
 module.exports = connection;

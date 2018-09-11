@@ -22,12 +22,6 @@ router.get('/api/burger', function (req, res) {
     });
 })
 
-// // Create a New Burger
-// router.post('/burger/create', function (req, res) {
-//     burger.insertOne(req.body.burger_name, function () {
-//         res.redirect('/');
-//     });
-// });
 // Create a New Burger
 router.post('/api/burger', function (req, res) {
     burger.insertOne(req.body.burger_name, function () {
@@ -35,12 +29,6 @@ router.post('/api/burger', function (req, res) {
     });
 });
 
-// // Devour a Burger
-// router.post('/burger/eat/:id', function (req, res) {
-//     burger.updateOne(req.params.id, function () {
-//         res.redirect('/');
-//     });
-// });
 
 router.post('/api/burger/:id', function (req, res) {
     burger.updateOne(req.params.id, function () {
