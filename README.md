@@ -10,4 +10,6 @@ Burger Madness! is a restaurant app that lets users input the names of burgers t
 
 [Burgers](https://cryptic-anchorage-73270.herokuapp.com/)
 
+# Preview
+
 ![alt text](https://github.com/SuzanneRashka/burger/blob/master/assets/images/burgers.png)
